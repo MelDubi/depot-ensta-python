@@ -1,7 +1,6 @@
 #%% ================ Introduction: load packages ================
 import numpy as np
 import matplotlib as mpl
-mpl.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
 import pandas as pd
@@ -175,3 +174,5 @@ print("Predicted price of a 1650 sq-ft, 3 br house ")
 print('(using normal equations):\n $%f\n' % price)
 
 # ============================================================
+
+# %%

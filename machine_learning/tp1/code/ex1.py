@@ -1,8 +1,6 @@
 #%% Import
 import numpy as np  
 import pandas as pd  
-import matplotlib as mpl
-mpl.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
 
@@ -81,7 +79,7 @@ plotData(X,y)
 
 
 
-# #%% =================== Part 3: Gradient descent ===================
+#%% =================== Part 3: Gradient descent ===================
 m = X.shape[0]
 
 # Add intercept term to X
@@ -172,50 +170,42 @@ print('For population = 70,000, we predict a profit of {:.4f}'.format(predict2[0
 
 
 
-# #%% ============= Part 4: Visualizing J(theta_0, theta_1) =============
-# print('\n -------------------------- \n')
-# print('Visualizing J(theta_0, theta_1) ...')
+#%% ============= Part 4: Visualizing J(theta_0, theta_1) =============
+print('\n -------------------------- \n')
+print('Visualizing J(theta_0, theta_1) ...')
 
-# # Create grid coordinates for plotting
-# theta0 = np.linspace(-10, 10, 100)
-# theta1 = np.linspace(-1, 4, 100)
-# theta0, theta1 = np.meshgrid(theta0, theta1, indexing='xy')
+# Create grid coordinates for plotting
+theta0 = np.linspace(-10, 10, 100)
+theta1 = np.linspace(-1, 4, 100)
+theta0, theta1 = np.meshgrid(theta0, theta1, indexing='xy')
 
-# Z = np.zeros((theta0.shape[0],theta1.shape[0]))
+Z = np.zeros((theta0.shape[0],theta1.shape[0]))
 
-# # Calculate Z-values (Cost) based on grid of coefficients
-# for (i,j),v in np.ndenumerate(Z):
-#     t = np.array([[theta0[i,j], theta1[i,j]]]).T
-#     Z[i,j] = computeCost(X,y, t)
-
-
+# Calculate Z-values (Cost) based on grid of coefficients
+for (i,j),v in np.ndenumerate(Z):
+    t = np.array([[theta0[i,j], theta1[i,j]]]).T
+    Z[i,j] = computeCost(X,y, t)
 
 
+fig = plt.figure(figsize=(15,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122, projection='3d')
 
-
-
-
-
-# fig = plt.figure(figsize=(15,6))
-# ax1 = fig.add_subplot(121)
-# ax2 = fig.add_subplot(122, projection='3d')
-
-# # Left plot
-# CS = ax1.contour(theta0, theta1, Z, np.geomspace(Z.min(),Z.max(),10), cmap=plt.cm.jet, color='black')
-# plt.clabel(CS, inline=1, fontsize=10)
-# ax1.scatter(theta_history[0,:],theta_history[1,:], c='r')
-# ax1.grid()
+# Left plot
+CS = ax1.contour(theta0, theta1, Z, np.geomspace(Z.min(),Z.max(),10), cmap=plt.cm.jet, color='black')
+plt.clabel(CS, inline=1, fontsize=10)
+ax1.scatter(theta_history[0,:],theta_history[1,:], c='r')
+ax1.grid()
 
 # # Right plot
-# ax2.plot_surface(theta0, theta1, Z, rstride=1, cstride=1, alpha=0.6, cmap=plt.cm.jet, linewidth=0, antialiased=True)
-# ax2.set_zlabel('Cost')
-# ax2.set_zlim(Z.min(),Z.max())
-# ax2.view_init(elev=15, azim=230)
-# ax2.grid()
+ax2.plot_surface(theta0, theta1, Z, rstride=1, cstride=1, alpha=0.6, cmap=plt.cm.jet, linewidth=0, antialiased=True)
+ax2.set_zlabel('Cost')
+ax2.set_zlim(Z.min(),Z.max())
+ax2.view_init(elev=15, azim=230)
+ax2.grid()
 
-# # settings common to both plots
-# for ax in fig.axes:
-#     ax.set_xlabel(r'$\theta_0$', fontsize=17)
-#     ax.set_ylabel(r'$\theta_1$', fontsize=17)
-
-plt.show()
+# settings common to both plots
+for ax in fig.axes:
+    ax.set_xlabel(r'$\theta_0$', fontsize=17)
+    ax.set_ylabel(r'$\theta_1$', fontsize=17)
+# %%

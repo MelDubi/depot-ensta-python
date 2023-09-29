@@ -10,12 +10,10 @@ def computeCost(X, y, theta):
 
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the cost of a particular choice of theta
-    
-    res = 0
-    for i in range(0, m):
-        res += ((theta[0]+theta[1]*(X[i][1])) - y[i])**2
 
-    J = (1/(2*m))*res
+    for i in range(0, m):
+        J += (1/(2*m)) * (X[i].T @ theta - y[i])**2
+
 	#   ============================================================
 
     return J
