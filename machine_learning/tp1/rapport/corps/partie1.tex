@@ -1,7 +1,7 @@
 \section{Régression linéaire avec une variable}
 \subsection{Affichage des données}
 
-Une pemière fonction \textit{plotData()}, qui permet d'afficher le profit du food truck en fonction de sa population sous forme de point. \\
+Une première fonction \textit{plotData()}, qui permet d'afficher le profit du food truck en fonction de sa population sous forme de point. \\
 L'objectif de cette partie sera de prédire le profit d'un food truck dans une nouvelle ville grâce à une descente de gradient en comprenant sa méthodologie.
 
 \begin{figure}[!h]
@@ -25,33 +25,37 @@ def plotData(X,y):
     \end{minipage}
 \end{figure}
 
+
+
 \subsection{Descente de gradient}
 
-Le modèle de régression linéaire est représenté par l'équation \ref{eq:regression_linear}. Cette équation nous permet d'obtenir une prédiction en fonction d'une entré $x_1$ et de $\theta$.
+Le modèle de régression linéaire est représenté par l'équation \ref{eq:regression_linear}. Cette équation nous permet d'obtenir une prédiction en fonction d'une entrée~$x_1$ et de $\theta$.
 
 \begin{equation}\label{eq:regression_linear}
     h_\theta(x) = x^T \theta =\theta_0 + \theta_1 x_1
 \end{equation}
 
 \noindent
-Pour que cette prédiction soit optimal, il est important de déterminer correctement les paramètres de notre modèle: $\theta$. Pour cela, nous devons réaliser deux étapes: Le calcul du coût $J(\theta)$ et une descente de gradient.
+Pour que cette prédiction soit optimale, il est important de déterminer correctement les paramètres de notre modèle~: $\theta$. Pour cela, nous devons réaliser deux étapes~: Le calcul du coût $J(\theta)$ et une descente de gradient.
     
+
+
 \subsubsection{Calcul du coût $J(\theta)$}
-Le calcul du coût $J(\theta)$ permet de mesurer la qualité de la prédiction, si le coût est faible alors notre prédiction est proche des valeurs réel et inversement si le coût est important.
+Le calcul du coût $J(\theta)$ permet de mesurer la qualité de la prédiction, si le coût est faible alors notre prédiction est proche des valeurs réelles et inversement si le coût est important.
 
 \begin{equation}\label{eq:cout}
    J(\theta) = \underbrace{\frac{1}{2m} \sum_{i=0}^{m-1}}_{(b)}(\underbrace{h_\theta(x^{(i)}) - y^{(i)}}_{\text{(a)}})^2
 \end{equation}
 
 \begin{itemize}
-    \item [(a)] \textbf{Différence entre la prédiction et la valeurs réel}, ce qui revient à déterminer l'erreur de la prédiction. On éléve le résultat au carré pour obtenir que des erreurs positives.
+    \item [(a)] \textbf{Différence entre la prédiction et la valeur réelle}, ce qui revient à déterminer l'erreur de la prédiction. On met le résultat au carré pour obtenir que des erreurs positivent.
     \item [(b)] \textbf{Moyenne des erreurs}, ce qui nous permet d'obtenir le coût $J(\theta)$
 \end{itemize}
 
 \vspace{.3cm}
 
-On remarque ici avec l'équation \ref{eq:cout} qui utilise l'équation \ref{eq:regression_linear}, que la seul valeur qui puisse influencer notre coût est $\theta$. Effectivement, les valeurs restante : $x$, $y$ et $m$; sont les valeurs
-de notre problèmes qui sont déterminé et non modifiable.
+On remarque ici avec l'équation \ref{eq:cout} qui utilise l'équation \ref{eq:regression_linear}, que la seule valeur qui puisse influencer notre coût est $\theta$. Effectivement, les valeurs restantes : $x$, $y$ et $m$; sont les valeurs
+de notre problème qui sont déterminées et non modifiables.
 
 
 \vspace{.5cm}
@@ -88,22 +92,24 @@ Expected cost value (approx) 54.24
     \end{minipage}
 \end{figure}
 
-Suite à la mise en application on constate effectivement l'influence de $\theta$ sur notre coût, on en déduit facilement qu'il est nécessaire de trouver la bonne valeur de $\theta$ pour minimiser ce coût. C'est le rôle de la descente de gradient.
+Suite à la mise en application, on constate effectivement l'influence de $\theta$ sur notre coût, on en déduit facilement qu'il est nécessaire de trouver la bonne valeur de $\theta$ pour minimiser ce coût. C'est le rôle de la descente de gradient.
+
+
 
 
 
 \subsubsection{Descente de gradient}
 
-La descente de gradient permet de minimiser le coût et donc d'obtenir les bonnes valeurs de theta pour réaliser une prédiction optimal.
+La descente de gradient permet de minimiser le coût et donc d'obtenir les bonnes valeurs de theta pour réaliser une prédiction optimale.
 
 \begin{equation}\label{eq:cout}
     \theta_j \coloneqq \theta_j - \alpha \underbrace{\frac{1}{m} \sum_{i=0}^{m-1} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)}}_{\text{Gradient du coût $J(\theta)$}}
  \end{equation}
 
-Pour mener à bien la descente de gradient on réalise à nouveau la moyenne des erreurs de prédiction mais cette fois-ci on la multiplie par un pas d'apprentissage $\alpha$. Ce pas permet de déterminer le taux d'apprentissage du modèle, 
-plus il est grand plus l'apprentissage sera rapide, mais si ce taux est trop important alors la descente de gradient peut divergé d'un minimum. Il est donc important de choisir correctement ce pas. Ce gradient de la fonction de coût est ensuite
-soustrait aux $\theta_j$ simulanément. \\
-Il faut réaliser cette étape un certains nombres d'itérations pour converger vers un minimum.
+Pour mener à bien la descente de gradient, on réalise à nouveau la moyenne des erreurs de prédiction, mais cette fois-ci on la multiplie par un pas d'apprentissage $\alpha$. Ce pas permet de déterminer le taux d'apprentissage du modèle, 
+plus il est grand plus l'apprentissage sera rapide, mais si ce taux est trop important alors la descente de gradient peut diverger d'un minimum. Il est donc important de choisir correctement ce pas. Ce gradient de la fonction de coût est ensuite
+soustrait aux $\theta_j$ simultanément. \\
+Il faut réaliser cette étape un certain nombre d'itérations pour converger vers un minimum.
 
 \clearpage
 
@@ -136,8 +142,8 @@ def gradientDescent(X, y, theta, alpha, num_iters):
 \captionof{listing}{Fonction gradientDescent}\label{listing:gradient_descente}
 \end{figure}
 
-Après application de la fonction \ref{listing:gradient_descente} on obtient les résultats du listing \ref{listing:output_gradientDescent} et figure \ref{fig:fig2}, ce qui nous permet de conclure que nos valeurs de $\theta$ sont correct et que l'on à un modèle satisfaisant pour 
-réaliser les prédictions optimal suivantes:
+Après application de la fonction \ref{listing:gradient_descente} on obtient les résultats du listing \ref{listing:output_gradientDescent} et figure \ref{fig:fig2}, ce qui nous permet de conclure que nos valeurs de $\theta$ sont correctes et que l'on a un modèle satisfaisant pour 
+réaliser les prédictions optimales suivantes:
 
 \begin{enumerate}
     \item \textit{For population = 35,000, we predict a profit of 4483.9858}
@@ -162,7 +168,10 @@ Expected theta values (approx)
     \end{minipage}
 \end{figure}
 
+
+
 \clearpage
+
 
 \subsection{Visualisation de $J(\theta)$}
 
@@ -174,5 +183,7 @@ Expected theta values (approx)
     \end{center}
 \end{figure}
 
-Ce graphique nous permet de visualiser plus facilement de comment le coût $J(\theta)$ évolue, on remarque que les valeurs de $\theta$ sont modifié au fur est à mesure pour converger vers le centre de l'eclipse qui représente
+Ce graphique nous permet de visualiser plus facilement de comment le coût $J(\theta)$ évolue, on remarque que les valeurs de $\theta$ sont modifiées au fur et à mesure pour converger vers le centre de l'éclipse qui représente
 le minimum optimal.
+
+
