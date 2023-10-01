@@ -24,6 +24,7 @@
 \RequirePackage{hyperref}
 \RequirePackage{colortbl}
 \RequirePackage{amsmath}
+\RequirePackage{mathtools}
 \RequirePackage{mwe}
 \RequirePackage{lipsum}
 
