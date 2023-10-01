@@ -97,7 +97,7 @@ Suite à la mise en application on constate effectivement l'influence de $\theta
 La descente de gradient permet de minimiser le coût et donc d'obtenir les bonnes valeurs de theta pour réaliser une prédiction optimal.
 
 \begin{equation}\label{eq:cout}
-    \theta_j \coloneqq \theta_j - \alpha \frac{1}{m} \sum_{i=0}^{m-1} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)}
+    \theta_j \coloneqq \theta_j - \alpha \underbrace{\frac{1}{m} \sum_{i=0}^{m-1} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)}}_{\text{Gradient du coût $J(\theta)$}}
  \end{equation}
 
 Pour mener à bien la descente de gradient on réalise à nouveau la moyenne des erreurs de prédiction mais cette fois-ci on la multiplie par un pas d'apprentissage $\alpha$. Ce pas permet de déterminer le taux d'apprentissage du modèle, 
@@ -137,7 +137,12 @@ def gradientDescent(X, y, theta, alpha, num_iters):
 \end{figure}
 
 Après application de la fonction \ref{listing:gradient_descente} on obtient les résultats du listing \ref{listing:output_gradientDescent} et figure \ref{fig:fig2}, ce qui nous permet de conclure que nos valeurs de $\theta$ sont correct et que l'on à un modèle satisfaisant pour 
-réaliser des prédictions optimal.
+réaliser les prédictions optimal suivantes:
+
+\begin{enumerate}
+    \item \textit{For population = 35,000, we predict a profit of 4483.9858}
+    \item \textit{For population = 70,000, we predict a profit of 45328.6063}
+\end{enumerate}
 
 \begin{figure}[!h]
     \begin{minipage}{.48\linewidth}
@@ -155,14 +160,6 @@ Expected theta values (approx)
             \caption{\label{fig:fig2}Profit prédit vs population}  
         \end{center}
     \end{minipage}
-\end{figure}
-
-\begin{figure}[!h]
-\begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{text}
-For population = 35,000, we predict a profit of 4483.9858
-For population = 70,000, we predict a profit of 45328.6063
-\end{minted}   
-\captionof{listing}{Prédiction}\label{listing:prediction1}
 \end{figure}
 
 \clearpage

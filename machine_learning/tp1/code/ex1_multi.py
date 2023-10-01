@@ -80,7 +80,7 @@ print('\n -------------------------- \n')
 print('Running gradient descent ...')
 
 # Choose some alpha value
-alpha = 0.01
+alpha = 0.3
 num_iters = 400
 
 # Init Theta and Run Gradient Descent 
