@@ -308,6 +308,7 @@ cython_debug/
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
+*.mtc
 *.aux
 *.lof
 *.log
