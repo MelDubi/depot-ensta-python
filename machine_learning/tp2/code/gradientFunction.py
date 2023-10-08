@@ -19,18 +19,14 @@ def gradientFunction(theta, X, y):
     theta = theta.reshape((n,1)) # due to the use of fmin_tnc
 
 
-    # gradient variable
-    grad = 0.
-
-
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the gradient of a particular choice of theta.
     #               Compute the partial derivatives and set grad to the partial
     #               derivatives of the cost w.r.t. each parameter in theta
+    grad = 0
+    for i in range(m):
+            grad += (1/m) * (sigmoid(X[i] @ theta) - y[i]) * X[i]
 
-
-
-
-    # =============================================================
 
     return grad
+    # =============================================================

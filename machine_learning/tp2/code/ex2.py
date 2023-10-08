@@ -58,10 +58,6 @@ print('Plotting data with + indicating (y = 1) examples and o indicating (y = 0)
 plotData(X, y)
 
 
-
-
-
-
 #%% ============ Part 2: Compute Cost and Gradient ============
 #  Setup the data matrix appropriately, and add ones for the intercept term
 m, n = X.shape
@@ -103,7 +99,7 @@ print('Expected gradients (approx): 0.043 2.566 2.647')
 
 
 
-##%% ============= Part 3: Optimizing using scipy  =============
+#%% ============= Part 3: Optimizing using scipy  =============
 theta = opt.fmin_tnc(costFunction, initial_theta, gradientFunction, args=(X, y))  
 theta = theta[0]
 cost = costFunction(theta, X, y)  
@@ -125,7 +121,7 @@ plotDecisionBoundary(theta, X, y, Lambda=0)
 
 
 
-##%%  ============== Part 4: Predict and Accuracies ==============
+#%%  ============== Part 4: Predict and Accuracies ==============
 
 #  Predict probability for a student with score 45 on exam 1
 #  and score 85 on exam 2
@@ -143,3 +139,5 @@ accuracy = np.mean(np.double(p == np.squeeze(y))) * 100
 print('\n -------------------------- \n')
 print('Train Accuracy: %f' % accuracy)
 print('Expected accuracy (approx): 89.0%');
+
+# %%
