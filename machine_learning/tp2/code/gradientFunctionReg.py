@@ -14,7 +14,7 @@ def gradientFunctionReg(theta, X, y, Lambda):
     m,n = X.shape   # number of training examples and parameters
     theta = theta.reshape((n,1)) # due to the use of fmin_tnc
 
-    grad = 0.
+    grad = 0
 
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the gradient of a particular choice of theta.
@@ -22,8 +22,10 @@ def gradientFunctionReg(theta, X, y, Lambda):
     #               derivatives of the cost w.r.t. each parameter in theta
     # =============================================================
 
+    for i in range(m):
+            grad += (1/m) * (sigmoid(X[i] @ theta) - y[i]) * X[i]
 
-
+    grad[1:] += (Lambda/m * theta.flatten()[1:])
 
     # =============================================================
 

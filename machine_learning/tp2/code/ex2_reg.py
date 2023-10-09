@@ -140,12 +140,12 @@ print('Expected Accuracy (approx): 83.1 %');
 
 
 
-##%% ============= Part 3: Optional Exercises =============
-
-
+#%% ============= Part 3: Optional Exercises =============
 print('\n -------------------------- \n')
 for Lambda in np.array([0,2,10,100]):
     theta = opt.fmin_tnc(costFunctionReg, initial_theta, fprime=gradientFunctionReg, args=(X, y,Lambda))  
     plotDecisionBoundary(theta[0], X, y, Lambda)
     
 
+
+# %%

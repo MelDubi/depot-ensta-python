@@ -13,8 +13,6 @@ def costFunctionReg(theta, X, y, Lambda):
     m,n = X.shape   # number of training examples and parameters
     theta = theta.reshape((n,1)) # due to the use of fmin_tnc
 
-    J = 0.
-
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the cost of a particular choice of theta.
     #               You should set J to the cost.
@@ -22,10 +20,10 @@ def costFunctionReg(theta, X, y, Lambda):
     #               derivatives of the cost w.r.t. each parameter in theta
 
     # =============================================================
-    
 
-
-    
+    predictions = sigmoid(X @ theta)
+    J = (1/m) * np.sum(-y * np.log(predictions) - (1 - y) * np.log(1 - predictions)) + ((Lambda/(2*m)) * np.sum(theta[1:]**2))
+      
     # =============================================================
     
     return J
