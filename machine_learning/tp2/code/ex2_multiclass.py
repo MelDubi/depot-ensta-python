@@ -44,7 +44,7 @@ num_labels = 10          # 10 labels, from 1 to 10
 # Load Training Data
 print('\n -------------------------- \n')
 print('Loading and Visualizing Data ...')
-datafile = 'ex3data1.mat'
+datafile = 'ex2data3.mat'
 mat = scipy.io.loadmat( datafile )
 X, y = mat['X'], mat['y']
 m,n = X.shape
@@ -120,3 +120,5 @@ print('Expected approx accuracy: 96.46%')
 #fig = plt.figure()  # open a new figure window
 #plt.plot(np.arange(1, 5001), y, 'ro', markersize=10)
 #plt.plot(np.arange(1, 5001), pred, 'bx', markersize=10)
+
+# %%

@@ -28,10 +28,8 @@ def predictOneVsAll(all_theta, X):
 #       np.argmax(probs, axis=1) to obtain the max for each row.
 #       
 
+    p = np.argmax(sigmoid(X @ all_theta.T), axis=1) + 1
 
-
-
-    
 # =========================================================================
 
     return p

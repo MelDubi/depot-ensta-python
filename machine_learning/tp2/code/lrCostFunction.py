@@ -25,9 +25,9 @@ def lrCostFunction(theta, X, y, Lambda):
     #
  
 
-   
-    
-
+    predictions = sigmoid(X @ theta)
+    J = (1/m) * np.sum(-y * np.log(predictions) - (1 - y) * np.log(1 - predictions)) + ((Lambda/(2*m)) * np.sum(theta[1:]**2))
+      
     # =============================================================
 
     return J
