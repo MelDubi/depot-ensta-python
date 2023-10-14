@@ -209,3 +209,5 @@ for ax in fig.axes:
     ax.set_xlabel(r'$\theta_0$', fontsize=17)
     ax.set_ylabel(r'$\theta_1$', fontsize=17)
 # %%
+
+plt.show()
