@@ -29,7 +29,6 @@ def predictOneVsAll(all_theta, X):
 #       
 
     p = np.argmax(sigmoid(X @ all_theta.T), axis=1) + 1
-
 # =========================================================================
 
     return p

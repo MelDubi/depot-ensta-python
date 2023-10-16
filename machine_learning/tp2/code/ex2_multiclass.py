@@ -109,16 +109,14 @@ all_theta = learnOneVsAll(X, y, num_labels, Lambda)
 #  After ...
 pred = predictOneVsAll(all_theta, X)
 
-
-
 # Evaluation
 accuracy = np.mean(np.double(pred == np.squeeze(y))) * 100
 print('\n -------------------------- \n')
 print('Training Set Accuracy: %f\n' % accuracy)
 print('Expected approx accuracy: 96.46%')
 
-#fig = plt.figure()  # open a new figure window
-#plt.plot(np.arange(1, 5001), y, 'ro', markersize=10)
-#plt.plot(np.arange(1, 5001), pred, 'bx', markersize=10)
+fig = plt.figure()  # open a new figure window
+plt.plot(np.arange(1, 5001), y, 'ro', markersize=10)
+plt.plot(np.arange(1, 5001), pred, 'bx', markersize=10)
 
 # %%

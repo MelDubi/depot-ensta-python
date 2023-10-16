@@ -2,16 +2,16 @@
 \subsection{Affichage des données}
 
 \begin{figure}[!h]
-    \begin{minipage}{.48\linewidth}
+    \begin{minipage}{.40\linewidth}
             Une première fonction \textit{plotData()}, qui permet d'afficher un graphique 2D avec les axes représentant les deux notes des examens, et les exemples positifs et négatifs affichés avec différents marqueurs. \\
             L'objectif de cette partie sera de construire un modèle de régression logistique pour prédire si un étudiant est admis dans une université en comprenant sa méthodologie.
-    \end{minipage}
-    \begin{minipage}{.48\linewidth}
+    \end{minipage}\hfill
+    \begin{minipage}{.56\linewidth}
         \begin{center}
             \includegraphics[width=1\textwidth]{./img/3.1.png}
             \caption{\label{fig:fig1}Diagramme de dispersion des données d'entraînement}  
         \end{center}
-    \end{minipage}\hfill
+    \end{minipage}
 \end{figure}
 
 \begin{figure}[!h]
@@ -68,7 +68,6 @@
     \vspace{.2cm}
 
 \begin{figure}[!h]
-    \begin{minipage}{.48\linewidth}
 \begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
 def costFunction(theta, X, y):
     # Initialize some useful values
@@ -79,27 +78,21 @@ def costFunction(theta, X, y):
     J = (1/m) * np.sum(-y * np.log(predictions) - (1 - y) * np.log(1 - predictions))
     
     return  J
+
+    """ return
+    Cost at initial theta (zeros): 0.693147
+    Expected cost (approx): 0.693
+    """
 \end{minted}   
 \captionof{listing}{Fonction computeCost}
-    \end{minipage}\hfill
-    \begin{minipage}{.48\linewidth}
-\begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, breaklines=true]{text}
-
-Cost at initial theta (zeros): 0.693147
-Expected cost (approx): 0.693
-    
-\end{minted}   
-\captionof{listing}{Output fonction computeCost}
-    \end{minipage}
 \end{figure}
 
-\clearpage
 
 \subsubsection{Descente de gradient}
 
 La descente de gradient permet de minimiser le coût et donc d'obtenir les bonnes valeurs de theta pour réaliser une prédiction optimale.
 
-\begin{equation}\label{eq:cout}
+\begin{equation}\label{eq:descente-gradient}
     \frac{\partial J(\theta)}{\partial \theta_j} = \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)}
 \end{equation}
 
@@ -112,7 +105,6 @@ Cette formule pour calculer le gradient de la régression logistique comme pour 
     \vspace{.2cm}
 
 \begin{figure}[!h]
-    \begin{minipage}{.48\linewidth}
 \begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
 def gradientFunction(theta, X, y):
         m = X.shape[0]  
@@ -123,27 +115,23 @@ def gradientFunction(theta, X, y):
             grad += (1/m) * (sigmoid(X[i] @ theta) - y[i]) * X[i]
 
         return grad
+
+        """ return 
+        theta: ['-25.1613', '0.2062', '0.2015']
+        Expected theta (approx): -25.161 0.206 0.201
+        
+        -------------------------- 
+        
+        For a student with scores 45 and 85, we predict an admission probability of 0.776291
+        Expected Proba (approx): 0.776
+        
+        -------------------------- 
+        
+        Train Accuracy: 89.000000
+        Expected accuracy (approx): 89.0%
+        """
 \end{minted}   
 \captionof{listing}{Fonction gradientFunction}
-    \end{minipage}\hfill
-    \begin{minipage}{.48\linewidth}
-\begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, breaklines=true]{text}
-    theta: ['-25.1613', '0.2062', '0.2015']
-    Expected theta (approx): -25.161 0.206 0.201
-    
-     -------------------------- 
-    
-    For a student with scores 45 and 85, we predict an admission probability of 0.776291
-    Expected Proba (approx): 0.776
-    
-     -------------------------- 
-    
-    Train Accuracy: 89.000000
-    Expected accuracy (approx): 89.0%
-
-\end{minted}   
-\captionof{listing}{Output fonction gradientFunction}
-    \end{minipage}
 \end{figure}
 
 
