@@ -38,7 +38,7 @@ from predict import predict
 #%% Load Data
 #  The first two columns contains the X values and the third column
 #  contains the label (y).
-path = 'ex2data2.txt'  
+path = '/Users/melvindubee/Repository/depot-ensta-python/machine_learning/tp2/code2/ex2data2.txt'  
 data = pd.read_csv(path, header=None, names=['Microchip Test 1', 'Microchip Test 2', 'Admitted'])  
 data.head()  
 

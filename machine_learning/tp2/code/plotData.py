@@ -3,12 +3,6 @@ from matplotlib import pyplot as plt
 
 
 def plotData(X,y):
-
-
-	# ====================== YOUR CODE HERE ======================
-	# Instructions: Plot data X with different markers according the value in y
-	# =============================================================
-
 	pos = X[(y==1).flatten(),:]
 	neg = X[(y==0).flatten(),:]
 	plt.plot(pos[:,0], pos[:,1], '+', markersize=7, markeredgecolor='black', markeredgewidth=2) 

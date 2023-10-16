@@ -36,7 +36,7 @@ from predict import predict
 #
 
 # Load Data with pandas
-path = 'ex2data1.txt'  
+path = '/Users/melvindubee/Repository/depot-ensta-python/machine_learning/tp2/code/ex2data1.txt'  
 data = pd.read_csv(path, header=None, names=['Exam 1', 'Exam 2', 'Admitted'])  
 data.head()  
 
