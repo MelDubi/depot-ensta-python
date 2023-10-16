@@ -74,7 +74,7 @@ def lrCostFunction(theta, X, y, Lambda):
       
     return J
 \end{minted}   
-\caption{Fonction de coût vectorisé}
+\captionof{listing}{Fonction de coût vectorisé}
 \end{figure}
 
 \subsubsection{Vectorisation de la descente de gradient}
@@ -95,7 +95,7 @@ def lrCostGradient(theta, X, y, Lambda):
 
     return grad.flatten()
 \end{minted}   
-\caption{Descente de gradient vectorisé}
+\captionof{listing}{Descente de gradient vectorisé}
 \end{figure}
 
 
@@ -126,7 +126,7 @@ def lrCostFunction(theta, X, y, Lambda):
     Expected cost: 0.734819
     """
 \end{minted}   
-\caption{Fonction de coût régularisé et vectorisé}
+\captionof{listing}{Fonction de coût régularisé et vectorisé}
 \end{figure}
 
 
@@ -154,7 +154,7 @@ def lrCostGradient(theta, X, y, Lambda):
     Expected gradients: 0.14656137  0.05144159  0.12472227  0.19800296
     """
 \end{minted}   
-\caption{Descente de gradient régularisé et vectorisé}
+\captionof{listing}{Descente de gradient régularisé et vectorisé}
 \end{figure}
 
 \clearpage
@@ -181,7 +181,7 @@ def learnOneVsAll(X, y, num_labels, Lambda):
 
     return all_theta
 \end{minted}   
-\caption{Apprentissage du classifieur}
+\captionof{listing}{Apprentissage du classifieur}
 \end{figure}
         
 
@@ -203,5 +203,5 @@ def predictOneVsAll(all_theta, X):
 
     return p
 \end{minted}   
-\caption{Prédiction One-Vs-All}
+\captionof{listing}{Prédiction One-Vs-All}
 \end{figure}
