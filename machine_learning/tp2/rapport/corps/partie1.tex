@@ -15,38 +15,40 @@
 \end{figure}
 
 \begin{figure}[!h]
-    \begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
-    def plotData(X,y):
-	    pos = X[(y==1).flatten(),:]
-	    neg = X[(y==0).flatten(),:]
-	    plt.plot(pos[:,0], pos[:,1], '+', markersize=7, markeredgecolor='black', markeredgewidth=2) 
-	    plt.plot(neg[:,0], neg[:,1], 'o', markersize=7, markeredgecolor='black', markerfacecolor='yellow') 
-	    plt.legend(['Admitted (y=1)', 'Not admitted (y=0)'], loc='upper right', shadow=True, fontsize='x-large', numpoints=1) 
-	    plt.grid()
-	    plt.xlabel('Exam 1 score')
-	    plt.ylabel('Exam 2 score')
-    \end{minted}   
-    \caption{Fonction plotData}
-    \end{figure}
+\begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
+def plotData(X,y):
+    pos = X[(y==1).flatten(),:]
+    neg = X[(y==0).flatten(),:]
+    plt.plot(pos[:,0], pos[:,1], '+', markersize=7, markeredgecolor='black', markeredgewidth=2) 
+    plt.plot(neg[:,0], neg[:,1], 'o', markersize=7, markeredgecolor='black', markerfacecolor='yellow') 
+    plt.legend(['Admitted (y=1)', 'Not admitted (y=0)'], loc='upper right', shadow=True, fontsize='x-large', numpoints=1) 
+    plt.grid()
+    plt.xlabel('Exam 1 score')
+    plt.ylabel('Exam 2 score')
+\end{minted}   
+\caption{Fonction plotData}
+\end{figure}
 
-    \subsection{Descente de gradient}
+    \subsection{Implémentation}
 
     Le modèle de régression linéaire est représenté par l'équation \ref{eq:regression_linear}. Cette équation nous permet d'obtenir une prédiction en fonction d'une entrée~$x$ et de $\theta$.
     
-    \begin{equation}\label{eq:regression_linear}
-        h_\theta(x) = g (x^T \theta ) \qquad \text{avec} \qquad g(z)=\frac{1}{1-e^{-z}} 
-    \end{equation}
+\begin{figure}[!h]
+    \begin{minipage}{.48\linewidth}
+\begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
+def sigmoid(z):
+        g = 1 / (1 + np.exp(-z))
 
-    \begin{figure}[!h]
-        \begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
-        def sigmoid(z):
-        """computes the sigmoid of z."""
-            g = 1 / (1 + np.exp(-z))
-
-        return  g
-        \end{minted}   
-        \caption{Fonction sigmoïd}
-        \end{figure}
+    return  g
+\end{minted}   
+    \end{minipage}\hfill
+    \begin{minipage}{.48\linewidth}
+        \begin{align}\label{eq:regression_linear}
+            h_\theta(x) = g (x^T \theta ) \\
+            g(z)=\frac{1}{1-e^{-z}} 
+        \end{align}
+\end{minipage}
+\end{figure}
     
     \noindent
     Pour que cette prédiction soit optimale, il est important de déterminer correctement les paramètres de notre modèle~: $\theta$. Pour cela, nous devons réaliser deux étapes~: Le calcul du coût $J(\theta)$ et une descente de gradient.
@@ -87,6 +89,7 @@ def costFunction(theta, X, y):
 \captionof{listing}{Fonction computeCost}
 \end{figure}
 
+\clearpage
 
 \subsubsection{Descente de gradient}
 
@@ -107,28 +110,28 @@ Cette formule pour calculer le gradient de la régression logistique comme pour 
 \begin{figure}[!h]
 \begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
 def gradientFunction(theta, X, y):
-        m = X.shape[0]  
-        n = X.shape[1]   
-        theta = theta.reshape((n,1)) 
-        grad = 0
-        for i in range(m):
-            grad += (1/m) * (sigmoid(X[i] @ theta) - y[i]) * X[i]
+    m = X.shape[0]  
+    n = X.shape[1]   
+    theta = theta.reshape((n,1)) 
+    grad = 0
+    for i in range(m):
+        grad += (1/m) * (sigmoid(X[i] @ theta) - y[i]) * X[i]
 
-        return grad
+    return grad
 
-        """ return 
-        theta: ['-25.1613', '0.2062', '0.2015']
-        Expected theta (approx): -25.161 0.206 0.201
-        
-        -------------------------- 
-        
-        For a student with scores 45 and 85, we predict an admission probability of 0.776291
-        Expected Proba (approx): 0.776
-        
-        -------------------------- 
-        
-        Train Accuracy: 89.000000
-        Expected accuracy (approx): 89.0%
+    """ return 
+    theta: ['-25.1613', '0.2062', '0.2015']
+    Expected theta (approx): -25.161 0.206 0.201
+    
+    -------------------------- 
+    
+    For a student with scores 45 and 85, we predict an admission probability of 0.776291
+    Expected Proba (approx): 0.776
+    
+    -------------------------- 
+    
+    Train Accuracy: 89.000000
+    Expected accuracy (approx): 89.0%
         """
 \end{minted}   
 \captionof{listing}{Fonction gradientFunction}
