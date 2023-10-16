@@ -116,25 +116,60 @@ def gradientFunction(theta, X, y):
     grad = 0
     for i in range(m):
         grad += (1/m) * (sigmoid(X[i] @ theta) - y[i]) * X[i]
-
     return grad
 
     """ return 
     theta: ['-25.1613', '0.2062', '0.2015']
     Expected theta (approx): -25.161 0.206 0.201
-    
-    -------------------------- 
-    
     For a student with scores 45 and 85, we predict an admission probability of 0.776291
     Expected Proba (approx): 0.776
-    
-    -------------------------- 
-    
     Train Accuracy: 89.000000
-    Expected accuracy (approx): 89.0%
-        """
+    Expected accuracy (approx): 89.0%"""
 \end{minted}   
 \captionof{listing}{Fonction gradientFunction}
 \end{figure}
 
+\subsubsection{La fonction d'optimisation fmin\_tnc}
 
+La fonction d'optimisation \textit{fmin\_tnc} nous permet d'obtenir automatiquement les $\theta$ minimiser sans donner de valeurs test. 
+
+\begin{figure}[!h]
+\begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
+theta = opt.fmin_tnc(costFunction, initial_theta, gradientFunction, args=(X, y))[0]
+cost = costFunction(theta, X, y)  
+print('Cost at theta found by scipy: %f' % cost)
+print('Expected cost (approx): 0.203')
+print('theta:', ["%0.4f" % i for i in theta])
+print('Expected theta (approx): -25.161 0.206 0.201')
+
+""" result
+Cost at theta found by scipy: 0.203498
+Expected cost (approx): 0.203
+theta: ['-25.1613', '0.2062', '0.2015']
+Expected theta (approx): -25.161 0.206 0.201"""
+\end{minted}   
+\captionof{listing}{fmin\_tnc}
+\end{figure}
+
+\subsection{Évaluation de la régression logistique}
+
+Pour rappel la fonction \textit{sigmoid} représente la prédiction, donc l'appel de sigmoid avec notre $\theta$ minimiser doit nous permettre d'obtenir une prédiction fiable.  \\
+Si notre prédiction est supérieur à 1, cela signifie que l'étudiant est admis. \\
+Si on suit cette logique la fonction suivante nous permet d'obtenir la prédiction des éléves admis et non-admis, on peut donc tracer la limite de décision.
+
+
+\begin{figure}[!h]
+    \begin{minipage}{.40\linewidth}
+\begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
+def predict(theta, X):
+    return (sigmoid(X @ theta) >= 0.5).astype(int)
+\end{minted}   
+\captionof{listing}{Fonction gradientFunction}
+    \end{minipage}\hfill
+    \begin{minipage}{.56\linewidth}
+        \begin{center}
+            \includegraphics[width=1\textwidth]{./img/3.2.png}
+            \caption{\label{fig:3.2}Limite de décision}  
+        \end{center}
+    \end{minipage}
+\end{figure}
