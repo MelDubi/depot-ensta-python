@@ -217,42 +217,41 @@ print(X_poly[0, :])
 #  Lambda to see how the fit and learning curve change.
 #
 
-# Train polynomial regression model
-Lambda = 0
-theta = trainLinearReg(X_poly, y, Lambda, maxiter=10)
+for Lambda in [0, 1, 100]:
+    theta = trainLinearReg(X_poly, y, Lambda, maxiter=10)
 
 
-# Plot training data and fit
-plt.figure()
-plt.scatter(X, y, marker='x', s=10, edgecolor='r', lw=2)
+    # Plot training data and fit
+    plt.figure()
+    plt.scatter(X, y, marker='x', s=10, edgecolor='r', lw=2)
 
-plotFit(min(X), max(X), mu, sigma, theta, p)
+    plotFit(min(X), max(X), mu, sigma, theta, p)
 
-plt.xlabel('Change in water level (x)')            # Set the y-axis label
-plt.ylabel('Water flowing out of the dam (y)')     # Set the x-axis label
-# plt.plot(X, np.column_stack((np.ones(m), X)).dot(theta), marker='_',  lw=2.0)
-plt.title('Polynomial Regression Fit (Lambda = %f)' % Lambda)
-plt.grid()
-plt.show()
+    plt.xlabel('Change in water level (x)')            # Set the y-axis label
+    plt.ylabel('Water flowing out of the dam (y)')     # Set the x-axis label
+    # plt.plot(X, np.column_stack((np.ones(m), X)).dot(theta), marker='_',  lw=2.0)
+    plt.title('Polynomial Regression Fit (Lambda = %f)' % Lambda)
+    plt.grid()
+    plt.show()
 
 
-# Plot Learning curves (Error vs Number of training examples)
-error_train, error_val = learningCurve(X_poly, y, X_poly_val, yval, Lambda)
-plt.figure()
-plt.plot(range(1,m+1), error_train, color='b', lw=2, label='Train')
-plt.plot(range(1,m+1), error_val, color='r', lw=2, label='Validation')
-plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
-plt.xlabel('Number of training examples')
-plt.ylabel('Error')
-plt.xlim(0, 13)
-plt.ylim(0, 150)
-plt.legend()
-plt.grid()
+    # Plot Learning curves (Error vs Number of training examples)
+    error_train, error_val = learningCurve(X_poly, y, X_poly_val, yval, Lambda)
+    plt.figure()
+    plt.plot(range(1,m+1), error_train, color='b', lw=2, label='Train')
+    plt.plot(range(1,m+1), error_val, color='r', lw=2, label='Validation')
+    plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
+    plt.xlabel('Number of training examples')
+    plt.ylabel('Error')
+    plt.xlim(0, 13)
+    plt.ylim(0, 150)
+    plt.legend()
+    plt.grid()
 
-print('Polynomial Regression (Lambda = %f)\n\n' % Lambda)
-print('# Training Examples\tTrain Error\tvalidation Error')
-for i in range(m):
-    print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
+    print('Polynomial Regression (Lambda = %f)\n\n' % Lambda)
+    print('# Training Examples\tTrain Error\tvalidation Error')
+    for i in range(m):
+        print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
 
 
 
@@ -278,3 +277,59 @@ for i in range(Lambda_vec.size):
     print(' %f\t%f\t%f' % (Lambda_vec[i], error_train[i], error_val[i]))
 
 #%% =========== Part 9:  Computing test set error =============
+Lambda = 3
+theta = trainLinearReg(X_poly, y, Lambda, maxiter=10)
+
+# Plot training data
+plt.figure()
+plt.scatter(Xtest, ytest, marker='x', s=60, edgecolor='r', lw=1.5)
+plt.ylabel('Water flowing out of the dam (ytest)')            # Set the y-axis label
+plt.xlabel('Change in water level (Xtest)')     # Set the x-axis label
+plt.grid()
+plt.show()
+
+
+
+# Plot Learning curves (Error vs Number of training examples)
+error_train, error_val = learningCurve(X_poly, y, X_poly_test, ytest, Lambda)
+plt.figure()
+plt.plot(range(1,m+1), error_train, color='b', lw=2, label='Train')
+plt.plot(range(1,m+1), error_val, color='r', lw=2, label='Validation')
+plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
+plt.xlabel('Number of training examples')
+plt.ylabel('Error')
+plt.xlim(0, 13)
+plt.ylim(0, 150)
+plt.legend()
+plt.grid()
+plt.show()
+
+print('Polynomial Regression (Lambda = %f)\n\n' % Lambda)
+print('# Training Examples\tTrain Error\tvalidation Error')
+for i in range(m):
+    print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
+
+test_error, _ = linearRegCostFunction(X_poly_test, ytest, theta, Lambda)
+print("The test set error is:", test_error)
+
+
+
+#%% =========== Part 9:  Plotting learning curves with randomly selected examples =============
+error_train, error_val = learningCurve(X_poly, y, X_poly_test, ytest, Lambda)
+plt.figure()
+plt.plot(range(1,m+1), error_train, color='b', lw=2, label='Train')
+plt.plot(range(1,m+1), error_val, color='r', lw=2, label='Validation')
+plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
+plt.xlabel('Number of training examples')
+plt.ylabel('Error')
+plt.xlim(0, 13)
+plt.ylim(0, 150)
+plt.legend()
+plt.grid()
+
+print('Polynomial Regression (Lambda = %f)\n\n' % Lambda)
+print('# Training Examples\tTrain Error\tvalidation Error')
+for i in range(m):
+    print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
+
+# %%

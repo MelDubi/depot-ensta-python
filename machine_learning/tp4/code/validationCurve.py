@@ -2,6 +2,7 @@ import numpy as np
 
 from trainLinearReg import trainLinearReg
 from linearRegCostFunction import linearRegCostFunction
+from learningCurve import learningCurve
 
 def validationCurve(X, y, Xval, yval):
     """returns the train
@@ -40,8 +41,10 @@ def validationCurve(X, y, Xval, yval):
 	#
 	#
 
-
-
+    for index, Lambda in enumerate(lambda_vec):
+        theta = trainLinearReg(X, y, Lambda)
+        error_train[index], _ = linearRegCostFunction(X, y, theta, 0)
+        error_val[index], _ = linearRegCostFunction(Xval, yval, theta, 0)
 # =========================================================================
 
     return lambda_vec, error_train, error_val

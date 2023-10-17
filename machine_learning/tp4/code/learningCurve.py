@@ -49,10 +49,12 @@ def learningCurve(X, y, Xval, yval, Lambda):
 #           # error_train and error_val
 #           ....
 #
-
-
-
 # -------------------------------------------------------------------------
+
+    for i in range(m):
+        theta = trainLinearReg(X[:i+1,:], y[:i+1], Lambda)
+        error_train[i], _ = linearRegCostFunction(X[:i+1,:], y[:i+1], theta, 0)
+        error_val[i], _ = linearRegCostFunction(Xval, yval, theta, 0)
 
 # =========================================================================
 
