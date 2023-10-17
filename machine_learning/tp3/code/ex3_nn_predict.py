@@ -100,7 +100,7 @@ print('Expected training Set Accuracy: 97.5%')
 #  Randomly permute examples
 rp = np.random.permutation(range(m))
 X = X[:,1:]
-plt.figure()
+plt.ion()
 for i in range(m):
     # Display
     X2 = np.array([X[rp[i],:]])
@@ -116,3 +116,5 @@ for i in range(m):
     plt.pause(1) 
     plt.close()
 
+
+# %%

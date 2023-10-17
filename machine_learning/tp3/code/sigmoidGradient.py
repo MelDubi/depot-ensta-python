@@ -11,7 +11,6 @@ def sigmoidGradient(z):
 #               each value of z (z can be a matrix, vector or scalar).
 
 
-
 # =============================================================
 
-    return g
+    return sigmoid(z) * (1 - sigmoid(z))

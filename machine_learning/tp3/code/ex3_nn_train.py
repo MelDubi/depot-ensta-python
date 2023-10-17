@@ -50,7 +50,7 @@ m, _ = X.shape
 rand_indices = np.random.permutation(range(m))
 sel = X[rand_indices[0:100], :]
 
-displayData(sel)
+# displayData(sel)
 
 
 
@@ -249,3 +249,5 @@ accuracy = np.mean(np.double(pred == y.flatten())) * 100
 print('Training Set Accuracy: %f\n'% accuracy)
 
 
+
+# %%

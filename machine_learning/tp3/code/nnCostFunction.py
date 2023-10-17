@@ -75,16 +75,22 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     # note here if the hand-written digit is "0", then that corresponds
     # to a y- vector with 1 in the 10th spot.
     y_matrix = np.zeros((num_labels,m)) # A compléter
-    
-    
-    
-    
+
+    for j in range(m):
+        for i in range(num_labels):
+            y_matrix[i, j] = (i == y[j]-1).astype(int)
     
     # Compute Cost
-    
-    
-    
-    
+    a1 = np.hstack((np.ones((X.shape[0], 1)), X))
+    z2 = a1 @ theta1.T
+    a2 = sigmoid(z2)
+    a2 = np.hstack((np.ones((a2.shape[0], 1)), a2))
+
+    z3 = a2 @ theta2.T
+    a3 = sigmoid(z3)
+
+    J = (1/m) * np.sum(-y_matrix.T * np.log(a3) - (1 - y_matrix.T) * np.log(1 - a3))
+          
     
     # =========================================================================
     # PART 2:  Cost regularisation (skip it the first time)
@@ -92,9 +98,8 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     
     
     # Cost regularisation
-    reg = 0.
+    reg = (Lambda / (2 * m)) * (np.sum(theta1[:, 1:] ** 2) + np.sum(theta2[:, 1:] ** 2))
     J = J + reg
-
 
     # =========================================================================
     # PART 3:  compute gradients (skip it the first time)

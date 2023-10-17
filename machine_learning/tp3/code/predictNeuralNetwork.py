@@ -24,11 +24,14 @@ def predictNeuralNetwork(Theta1, Theta2, X):
 #
 
 # =========================================================================
-    
+    z2 = X @ Theta1.T
+    a2 = sigmoid(z2)
+    a2 = np.hstack((np.ones((a2.shape[0], 1)), a2))
 
+    z3 = a2 @ Theta2.T
+    a3 = sigmoid(z3)
 
-
-
+    p = np.argmax(a3, axis=1) + 1
 
 # =========================================================================
     
