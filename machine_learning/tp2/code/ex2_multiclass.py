@@ -44,7 +44,7 @@ num_labels = 10          # 10 labels, from 1 to 10
 # Load Training Data
 print('\n -------------------------- \n')
 print('Loading and Visualizing Data ...')
-datafile = 'ex2data3.mat'
+datafile = '/Users/melvindubee/Repository/depot-ensta-python/machine_learning/tp2/code/ex2data3.mat'
 mat = scipy.io.loadmat( datafile )
 X, y = mat['X'], mat['y']
 m,n = X.shape

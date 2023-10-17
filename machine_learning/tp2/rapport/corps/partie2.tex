@@ -5,9 +5,9 @@
 \begin{figure}[!h]
     \begin{minipage}{.48\linewidth}
         Après avoir éxecuter la fonction d'affichage des données on constate ici que nous n'aurons pas une limite de décision linéaire dû à l'allure circulaire. \\
-        On ne peut donc pas se limité à $x_1$ et $x_2$. Nous allons mapper les caratéristiques sour forme de terme polynomiaux jusqu'à la puissance 6 pour obtenir un 
-        vecteur de dimension 28 grâce à nos deux caratéristiques. \\
-        La multiplication des caractéristiques nous permettra d'obtenir une régularisation logistique cohérente avec nos échantillon.
+        On ne peut donc pas se limité à $x_1$ et $x_2$. Nous allons mapper les caratéristiques sour forme de termes polynomiaux jusqu'à la puissance 6 pour obtenir un 
+        vecteur de dimension 28 grâce à nos deux caractéristiques. \\
+        La multiplication des caractéristiques nous permettra d'obtenir une régularisation logistique cohérente avec nos échantillons.
 
     \end{minipage}\hfill
     \begin{minipage}{.48\linewidth}
@@ -18,10 +18,10 @@
     \end{minipage}
 \end{figure}
 
-Cependant, plus il y a de caractéristiques, plus la limite décision est fidèle à nos échantillon. Ce problème est appelé l'\textit{overfitting}, les conséquences sont des prédictions futurs 
-incorecte. \\
-Pour contré le sur-apprentissage nous allons mettre en place une régularisation et modifier ses paramètres pour constater l'intérêt de régularisé notre fonction de coût $J(\theta)$ et 
-la descente de gradient suite à un re-mappage.
+Cependant, plus il y a de caractéristiques, plus la limite décision est fidèle à nos échantillons. Ce problème est appelé l'\textit{overfitting}, les conséquences sont des prédictions futures 
+incorrectes. \\
+Pour contrer le sur-apprentissage nous allons mettre en place une régularisation et modifier ses paramètres pour constater l'intérêt de régulariser notre fonction de coût $J(\theta)$ et 
+la descente de gradient suite à un nouveau mappage.
 
 \subsection{Fonction de coût régularisé $J(\theta)$}
 
@@ -30,7 +30,7 @@ la descente de gradient suite à un re-mappage.
 \end{equation}
 
 \begin{itemize}
-    \item [(a)] La régularisation nous permet d'atténuer tout les coéficient $\theta$ en fonction du paramètres $\lambda$. Plus celui-ci est petits, plus $\theta$ sera atténuer.
+    \item [(a)] La régularisation nous permet d'atténuer tout les coefficient $\theta$ en fonction du paramètre $\lambda$. Plus celui-ci est petit, plus $\theta$ sera atténué.
 \end{itemize}
 
 \begin{figure}[!h]
@@ -63,7 +63,7 @@ def costFunctionReg(theta, X, y, Lambda):
 \end{align}
 
 \begin{itemize}
-    \item [(a)] Ici on adapte également la régularisation sur la descente de gradient comme pour le coût $J(\theta)$. Conventionnellement on ne régularise pas $\theta_0$
+    \item [(a)] Ici, on adapte également la régularisation sur la descente de gradient comme pour le coût $J(\theta)$. Conventionnellement on ne régularise pas $\theta_0$
 \end{itemize}
 
 \begin{figure}[!h]
@@ -95,8 +95,8 @@ def gradientFunctionReg(theta, X, y, Lambda):
 
 \begin{figure}[!h]
     \begin{minipage}{.48\linewidth}
-       On trace la limite de décision avec \textit{plotDecisionBoundary} après avoir minimiser les valeurs de $\theta$ à l'aide la descente de gradient régularisé. \\
-       Le facteur de régularisation $\lambda$ est de 1, qui semble convenable. Notre limite de décision inclus la majorité des admis et exlus la majorité des refus. \\
+       On trace la limite de décision avec \textit{plotDecisionBoundary} après avoir minimiser les valeurs de $\theta$ à l'aide la descente de gradient régularisée. \\
+       Le facteur de régularisation $\lambda$ est de 1, ce qui semble convenable. Notre limite de décision inclue la majorité des admis et exclus la majorité des refus. \\
 
        Nous pouvons donc considérer que le modèle appris par ce classificateur est correct.
 
@@ -143,6 +143,6 @@ def gradientFunctionReg(theta, X, y, Lambda):
 \end{figure}
 
 Les 4 courbes nous permettent de visualiser l'impacte de $\lambda$. \\
-Comme expliqué plus tôt, un nombre important de caractéristiques sans régularisation nous permet d'obtenir un modèle proche des échantillons. La figure \ref{fig:4.5(1)}, montre que c'est bien le 
-cas puisque le facteur de régularisation est null. On imagine facilement que les prédictions ne peuvent pas être concluante puisqu'on assiste au problème de sur-apprentissage. \\
-Dans un autre côté quand le facteur de régularisation est trop important, le modèle n'est pas suffisament précis. Ce qui implique un sous-apprentissage.
+Comme expliqué plus tôt, un nombre important de caractéristiques sans régularisation nous permettent d'obtenir un modèle proche des échantillons. La figure \ref{fig:4.5(1)}, montre que c'est bien le 
+cas puisque le facteur de régularisation est nul. On imagine facilement que les prédictions ne peuvent pas être concluantes puisqu'on assiste au problème de sur-apprentissage. \\
+D'un autre côté quand le facteur de régularisation est trop important, le modèle n'est pas suffisament précis. Ce qui implique un sous-apprentissage.

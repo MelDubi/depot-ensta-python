@@ -100,7 +100,7 @@ La descente de gradient permet de minimiser le coût et donc d'obtenir les bonne
 \end{equation}
 
 \noindent
-Cette formule pour calculer le gradient de la régression logistique comme pour le coût n'est pas identique à celle de la régression linéaire, en effet cela est dû aux définitions différentes de \( h_\theta (x) \).
+ Le calcul du gradient de la régression logistique comme pour le coût n'est pas identique à celle de la régression linéaire, en effet cela est dû aux définitions différentes de \( h_\theta (x) \).
 
 \vspace{.5cm}
     \noindent
@@ -131,7 +131,7 @@ def gradientFunction(theta, X, y):
 
 \subsubsection{La fonction d'optimisation fmin\_tnc}
 
-La fonction d'optimisation \textit{fmin\_tnc} nous permet d'obtenir automatiquement les $\theta$ minimiser sans donner de valeurs test. 
+La fonction d'optimisation \textit{fmin\_tnc} nous permet d'obtenir automatiquement les $\theta$ minimisés sans donner de valeurs test. 
 
 \begin{figure}[!h]
 \begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
@@ -153,9 +153,9 @@ Expected theta (approx): -25.161 0.206 0.201"""
 
 \subsection{Évaluation de la régression logistique}
 
-Pour rappel la fonction \textit{sigmoid} représente la prédiction, donc l'appel de sigmoid avec notre $\theta$ minimiser doit nous permettre d'obtenir une prédiction fiable.  \\
+Pour rappel la fonction \textit{sigmoid} représente la prédiction, donc l'appel de sigmoid avec notre $\theta$ minimisé doit nous permettre d'obtenir une prédiction fiable.  \\
 Si notre prédiction est supérieur à 1, cela signifie que l'étudiant est admis. \\
-Si on suit cette logique la fonction suivante nous permet d'obtenir la prédiction des éléves admis et non-admis, on peut donc tracer la limite de décision.
+Si on suit cette logique la fonction suivante nous permet d'obtenir la prédiction des élèves admis et non-admis, on peut donc tracer la limite de décision.
 
 
 \begin{figure}[!h]
