@@ -266,7 +266,8 @@ for Lambda in [0, 1, 100]:
 Lambda_vec, error_train, error_val = validationCurve(X_poly, y, X_poly_val, yval)
 
 plt.figure()
-plt.plot(Lambda_vec, error_train, 'b', Lambda_vec, error_val, 'r', lw=2)
+plt.plot(Lambda_vec, error_train, 'b', lw=2, label='Train')
+plt.plot(Lambda_vec, error_val, 'r', lw=2, label='Validation')
 plt.legend()#'Train', 'validation'
 plt.xlabel('Lambda')
 plt.ylabel('Error')
@@ -276,10 +277,8 @@ print('Lambda\tTrain Error\tValidation Error')
 for i in range(Lambda_vec.size):
     print(' %f\t%f\t%f' % (Lambda_vec[i], error_train[i], error_val[i]))
 
-#%% =========== Part 9:  Computing test set error =============
-Lambda = 3
-theta = trainLinearReg(X_poly, y, Lambda, maxiter=10)
 
+#%% =========== Part 9:  Computing test set error =============
 # Plot training data
 plt.figure()
 plt.scatter(Xtest, ytest, marker='x', s=60, edgecolor='r', lw=1.5)
@@ -289,47 +288,52 @@ plt.grid()
 plt.show()
 
 
+# calc test error
+Lambda = 3
+theta = trainLinearReg(X_poly, y, Lambda, maxiter=100)
 
-# Plot Learning curves (Error vs Number of training examples)
-error_train, error_val = learningCurve(X_poly, y, X_poly_test, ytest, Lambda)
+Jtest, _ = linearRegCostFunction(X_poly_test, ytest, theta, 0)
+print("The test set error is:", Jtest)
+
+
+
+#%% =========== Part 10:  Plotting learning curves with randomly selected examples =============
+num_iterations = 50
+Lambda = 0.01
+errors_train = []
+errors_val = []
+
+i = np.random.randint(5, len(X) + 1)
+
+for _ in range(num_iterations):
+    i_train = np.random.choice(len(X), i, replace=False)
+    i_val = np.random.choice(len(Xval), i, replace=False)
+    
+    X_random = X_poly[i_train]  
+    y_random = y[i_train]
+    X_val_random = X_poly_val[i_val] 
+    y_val_random = yval[i_val]
+
+    X_random = np.column_stack((np.ones(X_random.shape[0]), X_random))
+    X_val_random = np.column_stack((np.ones(X_val_random.shape[0]), X_val_random))
+        
+    theta = trainLinearReg(X_random, y_random, Lambda, maxiter=100)
+    error_train, error_val = learningCurve(X_random, y_random, X_val_random, y_val_random, Lambda)
+
+    errors_train.append(error_train)
+    errors_val.append(error_val)
+    
+error_train = np.mean(np.array(errors_train), axis=0)
+error_val = np.mean(np.array(errors_val), axis=0)
+
 plt.figure()
-plt.plot(range(1,m+1), error_train, color='b', lw=2, label='Train')
-plt.plot(range(1,m+1), error_val, color='r', lw=2, label='Validation')
+plt.plot(range(1,i+1), error_train, color='b', lw=2, label='Train')
+plt.plot(range(1,i+1), error_val, color='r', lw=2, label='Validation')
 plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
 plt.xlabel('Number of training examples')
 plt.ylabel('Error')
-plt.xlim(0, 13)
-plt.ylim(0, 150)
+plt.xlim(0, i+1)
+plt.ylim(0, 110)
 plt.legend()
 plt.grid()
-plt.show()
-
-print('Polynomial Regression (Lambda = %f)\n\n' % Lambda)
-print('# Training Examples\tTrain Error\tvalidation Error')
-for i in range(m):
-    print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
-
-test_error, _ = linearRegCostFunction(X_poly_test, ytest, theta, Lambda)
-print("The test set error is:", test_error)
-
-
-
-#%% =========== Part 9:  Plotting learning curves with randomly selected examples =============
-error_train, error_val = learningCurve(X_poly, y, X_poly_test, ytest, Lambda)
-plt.figure()
-plt.plot(range(1,m+1), error_train, color='b', lw=2, label='Train')
-plt.plot(range(1,m+1), error_val, color='r', lw=2, label='Validation')
-plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
-plt.xlabel('Number of training examples')
-plt.ylabel('Error')
-plt.xlim(0, 13)
-plt.ylim(0, 150)
-plt.legend()
-plt.grid()
-
-print('Polynomial Regression (Lambda = %f)\n\n' % Lambda)
-print('# Training Examples\tTrain Error\tvalidation Error')
-for i in range(m):
-    print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
-
 # %%
