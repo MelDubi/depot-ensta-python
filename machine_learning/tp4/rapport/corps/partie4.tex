@@ -2,28 +2,28 @@
 
 
 \begin{enumerate}
-    \item \textbf{Comment découpe-t-on un jeu de données pour entraîner et évaluer un modèle de prédiction ?}\\
-    Pour entrainer et évaluer un modèle de prédiction notre jeu de données est découpé en trois groupes:
+    \item \textbf{Comment découpe-t-on un jeu de données pour entrainer et évaluer un modèle de prédiction\,?}\\
+    Pour entrainer et évaluer un modèle de prédiction, notre jeu de données est découpé en trois groupes~:
     \begin{itemize}
         \item \textbf{Training set:} Données utilisées pour entrainer notre modèle.
-        \item \textbf{Validation set:} Données utilisées pour ajuster les paramètres de notre modèle.
-        \item \textbf{Test set:} Données inconus par le modèle et utilisées l'évaluer.
+        \item \textbf{Validation set~:} Données utilisées pour ajuster les paramètres de notre modèle.
+        \item \textbf{Test set~:} Données inconnues par le modèle et utilisées l'évaluer.
     \end{itemize}
 
     \clearpage
     
-    \item \textbf{Définissez ce qu'est la capacité d'un modèle de prédiction (c'est-à-dire sa complexité). Sur quel ensemble l'évalue-t-on ?} \\
-    La capacité d'un modèle de prédiction est sa capacité à modéliser des sytèmes complexes, ce qui n'est pas le cas d'une régression linéaire simple. La capacité d'un modèle est évaluer avec l'ensemble de 
-    validation, celui-ci permet d'ajuster les paramètres de notre modèle et le rendre plus complexe. Si celui-ci est trop complexe alors notre système peut être en sur-apprentissage, dans le cas contraire en sous-apprentissage.
+    \item \textbf{Définissez ce qu'est la capacité d'un modèle de prédiction (c'est-à-dire sa complexité). Sur quel ensemble l'évalue-t-on\,?} \\
+    La capacité d'un modèle de prédiction est sa capacité à modéliser des systèmes complexes, ce qui n'est pas le cas d'une régression linéaire simple. La capacité d'un modèle est évaluée avec l'ensemble de 
+    validation, celui-ci permet d'ajuster les paramètres de notre modèle et le rendre plus complexe. Si celui-ci est trop complexe alors notre système peut être en surapprentissage, dans le cas contraire en sous-apprentissage.
     \vspace{0.5cm}
 
-    \item \textbf{A quoi sert l'ensemble de validation ?} \\
+    \item \textbf{À quoi sert l'ensemble de validation\,?} \\
     L'ensemble de validation est utilisé pour ajuster et améliorer la performance des paramètres de notre modèle. Par exemple dans ce TP nous avons pu sélectionner une valeur de $\lambda$ optimal.
     \vspace{0.5cm}
 
-    \item \textbf{A quoi sert la "courbe d'apprentissage" ?} \\
-    La courbe d'apprentissage permet d'observer l'évolution des erreurs d'entrainement et de validation en fonction du nombre d'échantillon. Elle nous permet de s'assurer de la performance du modèle et la présence de bias élevé 
-    \textit{(sous-apprentissage)} ou de variance élevé \textit{(sur-apprentissage)}.
+    \item \textbf{À quoi sert la "courbe d'apprentissage"\,?} \\
+    La courbe d'apprentissage permet d'observer l'évolution des erreurs d'entrainement et de validation en fonction du nombre d'échantillons. Elle nous permet de nous assurer de la performance du modèle et la présence de bias élevé 
+    \textit{(sous-apprentissage)} ou de variance élevée \textit{(surapprentissage)}.
 
 
 \end{enumerate}

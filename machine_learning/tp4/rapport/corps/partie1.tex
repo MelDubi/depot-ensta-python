@@ -3,10 +3,10 @@
 \begin{figure}[!h]
     \begin{minipage}{.48\linewidth}
         Nous avons déjà appliqué la régression linéaire dans le \textit{TP1}, le principe sera le même, mais cette fois-ci nous 
-        allons appliqué le principe de régularisation rencontré dans le \textit{TP2} pour la régression logistique. L'objectif 
-        est de prédire la quantité d'eau qui s'écoule d'un barrage à l'aide de la variation du niveau d'eau dans un résrvoir\\
+        allons appliquer le principe de régularisation rencontré dans le \textit{TP2} pour la régression logistique. L'objectif 
+        est de prédire la quantité d'eau qui s'écoule d'un barrage à l'aide de la variation du niveau d'eau dans un réservoir.\\
 
-        Pour rappel, l'hypothèse dans le cas d'une régression linéaire est la suivante:
+        Pour rappel, l'hypothèse dans le cas d'une régression linéaire est la suivante~:
         \begin{equation}\label{eq:regression_linear}
             h_\theta(x) = x^T \theta =\theta_0 + \theta_1 x_1
         \end{equation}
@@ -20,6 +20,7 @@
     \end{minipage}
 \end{figure}
 
+
 \subsection{Fonction de coût $J(\theta)$ régularisée}
 
 
@@ -28,7 +29,7 @@
  \end{equation} 
 
 \begin{itemize}
-    \item [(a)] La régularisation nous permet d'atténuer tout les coefficient $\theta$ en fonction du paramètre $\lambda$. Plus celui-ci est petit, plus $\theta$ sera atténué.
+    \item [(a)] La régularisation nous permet d'atténuer tous les coefficients $\theta$ en fonction du paramètre $\lambda$. Plus celui-ci est petit, plus $\theta$ sera atténué.
 \end{itemize}
 
 \begin{figure}[!h]
@@ -50,6 +51,8 @@ Cost at theta = [1  1]: 303.993192
 \end{figure}
 
 
+
+
 \subsection{Descente de gradient régularisée}
 \begin{align}\label{eq:descente-gradient-reg}
     \frac{\partial J(\theta)}{\partial \theta_j} = \frac{1}{m} \sum_{i=0}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \qquad \qquad \qquad \text{pour} \quad j=0 \\
@@ -65,7 +68,7 @@ Cost at theta = [1  1]: 303.993192
 
 
 Le calcul du coût $J(\theta)$ permet de mesurer la qualité de la prédiction, si le coût est faible alors notre prédiction est proche des valeurs réelles et inversement si le coût est important. \\
-On remarque ici avec l'équation \ref{eq:cout-reg} qui utilise l'équation \ref{eq:regression_linear}, que les seules valeurs qui puisse influencer notre coût est $\theta$ et $\lambda$. Pour réduire notre coût nous devons donc minimiser $\theta$, c'est l'objectif
+On remarque ici avec l'équation \ref{eq:cout-reg} qui utilise l'équation \ref{eq:regression_linear}, que les seules valeurs qui puissent influencer notre coût est $\theta$ et $\lambda$. Pour réduire notre coût, nous devons donc minimiser $\theta$, c'est l'objectif
 de la descente de gradient, minimiser $J(\theta)$.
 
 \vspace{0.2cm}
@@ -90,14 +93,16 @@ Gradient at theta = [1  1]:  [-15.303016 598.250744]
 \end{figure}
 
 
+
+
 \subsection{Visualisation de la régression linéaire régularisée}
 
 \begin{figure}[!h]
     \begin{minipage}{.48\linewidth}
-        A l'aide de la fonction \textit{trainLinearReg} qui utilise elle même notre fonction \ref{lst:linearRegCostFunction} nous pouvons calculer les valeurs optimal de $\theta$. \\
-        On constatent que notre régression n'est pas optimal, on peut même dire que nous somme en sous-apprentissage. \\
+        À l'aide de la fonction \textit{trainLinearReg} qui utilise elle-même notre fonction \ref{lst:linearRegCostFunction} nous pouvons calculer les valeurs optimales de $\theta$. \\
+        On constate que notre régression n'est pas optimale, on peut même dire que nous sommes en sous-apprentissage. \\
         Le problème ne vient pas de $\lambda$ étant donné qu'il vaut 0, la régularisation n'a donc aucune utilité. 
-        Si nous obtenons un résultat similaire est dû aux nombres insuffisant de caractéristiques, notre $\theta$ est seulement de dimension 2. Pour résoudres se problème et augmenter la dimension de $\theta$ nous pouvons modifié nos caractéristiques sous forme polynomial.
+        Si nous obtenons un résultat similaire c'est dû aux nombres insuffisants de caractéristiques, notre $\theta$ est seulement de dimension~2. Pour résoudre ce problème, nous pouvons modifier nos caractéristiques sous forme polynomiale, cette méthode sera appliquée plus tard.
     \end{minipage}\hfill
     \begin{minipage}{.48\linewidth}
         \begin{center}
