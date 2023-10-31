@@ -3,34 +3,23 @@ import numpy as np
 from sigmoid import sigmoid
 
 def predictNeuralNetwork(Theta1, Theta2, X):
-    """ outputs the predicted label of X given the
-    trained weights of a neural network (Theta1, Theta2)
-    """
 
 # Useful values
     m, _ = X.shape
     num_labels, _ = Theta2.shape
+    # Input Layer
+    a1 = X
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Complete the following code to make predictions using
-#               your learned neural network. You should set p to a 
-#               vector containing labels between 1 to num_labels.
-#
-# Hint: The max function might come in useful. In particular, the np.argmax
-#       function can return the index of the max element, for more
-#       information see 'numpy.argmax' on the numpy website. If your examples 
-#       are in rows, then, you can use np.argmax(probs, axis=1) to obtain the 
-#       max for each row.
-#
-
-# =========================================================================
+    # Hidden Layer
+    z2 = a1 @ Theta1.T
+    a2 = sigmoid(z2)
     
+    # Add column 1's 
+    a2 = np.hstack((np.ones((a2.shape[0], 1)), a2))
 
-
-
-
-
-# =========================================================================
+    # Output Layer
+    z3 = a2 @ Theta2.T
+    hypothesis = np.argmax(sigmoid(z3), axis=1) + 1 # on ajoute 1 pour faire l'offset
     
-    return p
+    return hypothesis
 

@@ -67,6 +67,7 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 
     
     # Add ones to the X data matrix
+    #X = np.column_stack((np.ones((m, 1)), X))
 
     
     
@@ -74,25 +75,37 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     # Construct a 10xm "y" matrix with all zeros and only one "1" entry
     # note here if the hand-written digit is "0", then that corresponds
     # to a y- vector with 1 in the 10th spot.
-    y_matrix = np.zeros((num_labels,m)) # A compléter
+    y_matrix = np.zeros((num_labels,m)) 
     
-    
-    
-    
+    for i in range(m):
+        for j in range(num_labels):
+            y_matrix[j, i] = (j == y[i]-1).astype(int)
+            
     
     # Compute Cost
+    a1 = np.hstack((np.ones((X.shape[0], 1)), X))
+
+    # Hidden Layer
+    z2 = a1 @ theta1.T
+    a2 = sigmoid(z2)
     
-    
-    
-    
-    
+    # Add column 1's 
+    a2 = np.hstack((np.ones((a2.shape[0], 1)), a2))
+
+        # Output Layer
+    z3 = a2 @ theta2.T
+
+    a3 = sigmoid(z3) 
+
+    J = (1/m) * np.sum(-y_matrix.T * np.log(a3) - (1 - y_matrix.T) * np.log(1-a3))
+
+  
     # =========================================================================
     # PART 2:  Cost regularisation (skip it the first time)
 
     
-    
     # Cost regularisation
-    reg = 0.
+    reg = (Lambda / (2 * m)) * (np.sum(theta1[: , 1:] ** 2) + np.sum(theta2[:, 1:] ** 2))
     J = J + reg
 
 
@@ -115,11 +128,7 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
     theta2_grad[:,1:] = theta2_grad[:,1:] + reg
 
     
-    
-        
-
     # Unroll gradient
     grad = np.hstack((theta1_grad.T.ravel(), theta2_grad.T.ravel()))
-
 
     return J, grad

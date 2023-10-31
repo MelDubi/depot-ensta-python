@@ -41,7 +41,7 @@ num_labels = 10          # 10 labels, from 1 to 10
 print('\n -------------------------- \n')
 print('Loading and Visualizing Data ...')
 
-data = scipy.io.loadmat('ex3data1.mat')
+data = scipy.io.loadmat('/Users/melvindubee/Repository/depot-ensta-python/machine_learning/tp3/code2/ex3data1.mat')
 X = data['X']
 y = data['y']
 m, _ = X.shape
@@ -62,7 +62,7 @@ print('\n -------------------------- \n')
 print('Loading Saved Neural Network Parameters ...')
 
 # Load the weights into variables theta1 and theta2
-data = scipy.io.loadmat('ex3weights.mat')
+data = scipy.io.loadmat('/Users/melvindubee/Repository/depot-ensta-python/machine_learning/tp3/code2/ex3weights.mat')
 theta1 = data['Theta1'].astype('float64')
 theta2 = data['Theta2'].astype('float64')
 
@@ -209,7 +209,7 @@ Lambda = 1
 costFunc = lambda p: nnCostFunction(p, input_layer_size, hidden_layer_size, num_labels, X, y, Lambda)[0]
 gradFunc = lambda p: nnCostFunction(p, input_layer_size, hidden_layer_size, num_labels, X, y, Lambda)[1]
 
-result = fmin_cg(costFunc, fprime=gradFunc, x0=initial_nn_params, maxiter=50, disp=True,full_output=True)
+result = fmin_cg(costFunc, fprime=gradFunc, x0=initial_nn_params, maxiter=400, disp=True,full_output=True)
 nn_params = result[0]
 cost = result[1]
 

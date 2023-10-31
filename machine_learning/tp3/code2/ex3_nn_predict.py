@@ -37,7 +37,7 @@ num_labels        = 10  # 10 labels, from 1 to 10
 # Load Training Data
 print('\n -------------------------- \n')
 print('Loading and Visualizing Data ...')
-datafile = 'ex3data1.mat'
+datafile = '/Users/melvindubee/Repository/depot-ensta-python/machine_learning/tp3/code2/ex3data1.mat'
 mat = scipy.io.loadmat( datafile )
 X, y = mat['X'], mat['y']
 m,n = X.shape
@@ -63,9 +63,9 @@ print('\n -------------------------- \n')
 print('Loading Saved Neural Network Parameters ...')
 
 # Load the weights into variables Theta1 and Theta2
-data = scipy.io.loadmat('ex3weights.mat')
-Theta1 = data['Theta1']
-Theta2 = data['Theta2']
+data = scipy.io.loadmat('/Users/melvindubee/Repository/depot-ensta-python/machine_learning/tp3/code2/ex3weights.mat')
+Theta1 = data['Theta1'] # Theta1 has size 25 x 401 (The bias of each neuron is in the first column)
+Theta2 = data['Theta2'] # Theta2 has size 10 x 26 (idem)
 
 
 
@@ -100,7 +100,7 @@ print('Expected training Set Accuracy: 97.5%')
 #  Randomly permute examples
 rp = np.random.permutation(range(m))
 X = X[:,1:]
-plt.figure()
+plt.ion()
 for i in range(m):
     # Display
     X2 = np.array([X[rp[i],:]])
