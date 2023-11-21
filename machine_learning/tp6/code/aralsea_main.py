@@ -28,6 +28,16 @@ from preprocessing import preprocessing
 # Chargement des données et prétraitements
 featLearn, img73, img87 = preprocessing()
 
+height, width, channels = img73.shape
+print(f"Image img73 dimensions: Height = {height}, Width = {width}, Channels = {channels}")
+height, width, channels = img87.shape
+print(f"Image img87 dimensions: Height = {height}, Width = {width}, Channels = {channels}")
+
+"""
+Image img73 dimensions: Height = 889, Width = 1086, Channels = 3
+Image img87 dimensions: Height = 889, Width = 1086, Channels = 3
+"""
+
 
 
 
