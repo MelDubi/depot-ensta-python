@@ -12,7 +12,8 @@ plt.ioff() # to see figure avant input
 from preprocessing import preprocessing
 from unsupervisedTraining import unsupervisedTraining
 
-
+from displayFeatures2d import displayFeatures2d
+from displayFeatures3d import displayFeatures3d
 
 
 
@@ -52,44 +53,15 @@ plt.show()
 
 #%% Apprentissage / Learning / Training
 
-
 # Apprentissage de la fonction de classement
-
-# ------------------------------------------------
-model = unsupervisedTraining(featLearn, model='kmeans')
-
-
-# ------------------------------------------------
-# ------------------------------------------------
-
-
-
+model = unsupervisedTraining(featLearn, method='kmeans')
 
 # prediction des labels sur la base d'apprentissage
-
-# ------------------------------------------------
-# YOUR CODE HERE
-
-
-# ------------------------------------------------
-# ------------------------------------------------
-
-
-
+labels_predict = model.predict(featLearn)
 
 # Visualisation des resultats
-
-# ------------------------------------------------
-# YOUR CODE HERE
-
-
-
-
-
-
-# ------------------------------------------------
-# ------------------------------------------------
-
+displayFeatures2d(featLearn, labels_predict)
+displayFeatures3d(featLearn, labels_predict)
 
 
 #%% Classement et estimation de la diminution de surface
