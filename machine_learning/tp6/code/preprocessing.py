@@ -20,5 +20,8 @@ def preprocessing():
     print(f"Number of training data: {nbPix}")
     """ Number of training data: 1714 """
 
+    displayFeatures2d(feat)
+    displayFeatures3d(feat)
+
     return feat, img73, img87
     

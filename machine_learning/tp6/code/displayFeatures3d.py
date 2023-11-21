@@ -23,13 +23,16 @@ def displayFeatures3d(feat, group=None):
     df = pd.DataFrame(feat, columns=['red', 'green', 'blue'])  
 
     # Affichage
-    axes = plt.figure().gca(projection='3d')
+    fig = plt.figure()
+    axes = fig.add_subplot(111, projection='3d')
     axes.scatter(df['red'], df['green'], df['blue'], c=group)
     axes.set_xlabel('red')
     axes.set_ylabel('green')
     axes.set_zlabel('blue')
-    #    axes.grid()
-    #    plt.title('Nuage de points et histogramme')
+    axes.grid()
+    plt.title('Nuage de points et histogramme')
+    plt.show()
+
     
     
 
