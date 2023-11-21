@@ -1,0 +1,23 @@
+\section{Constitution d’un ensemble de données d’apprentissage}
+
+\textbf{Question 1: Sous-échantillonage}
+
+\begin{figure}[!h]
+    \begin{minted}[frame=lines, framesep=2mm, baselinestretch=1.2, fontsize=\footnotesize, linenos, breaklines=true]{python}
+def preprocessing():
+    # [...]
+    feat, nbPix, nbFeat = selectFeatureVectors(img73, 500)
+    print(f"Number of training data: {nbPix}")
+    
+    return feat, img73, img87
+    """return
+    Number of training data: 1714 
+    """
+    \end{minted}   
+    \captionof{listing}{\label{lst:main}Main Function}
+\end{figure}
+
+Le résultat obtenu est le nombre de données d'apprentissage, il est donc de 1714. En sous-échantillonnant les 
+données, on va réduire la taille de l'ensemble d'apprentissage, ce qui va nous simplifier la tâche pour la suite. 
+
+
