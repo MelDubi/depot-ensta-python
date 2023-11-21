@@ -76,19 +76,19 @@ labels_prediction_img87 = unsupervisedClassifying(model, img87)
 img73_label, img73_plot = displayImageLabel(labels_prediction_img73, img73)
 img87_label, img87_plot = displayImageLabel(labels_prediction_img87, img87)
 
-plt.subplot(1, 2, 1)
-plt.imshow(img73_label)
-plt.title('Image 1973 Predicted Labels')
+# Pourcentage de la mer
+proportion_mer_img73 = (np.sum(img73_label == 1) / img73_label.size)*100
+proportion_mer_img87 = (np.sum(img87_label == 1) / img87_label.size)*100
 
-plt.subplot(1, 2, 2)
-plt.imshow(img87_label)
-plt.title('Image 1987 Predicted Labels')
-plt.colorbar()
+print("Proportion de la mer dans l'Image 1973:", proportion_mer_img73)
+print("Proportion de la mer dans l'Image 1987:", proportion_mer_img87)
+print("Une chute du niveau de la mer de:", proportion_mer_img73-proportion_mer_img87)
 
-plt.show()
-
-
-
+"""
+Proportion de la mer dans l'Image 1973: 27.632828930016085
+Proportion de la mer dans l'Image 1987: 21.373769627030974
+Une chute du niveau de la mer de: 6.259059302985111
+"""
 
 # ------------------------------------------------
 # YOUR CODE HERE
