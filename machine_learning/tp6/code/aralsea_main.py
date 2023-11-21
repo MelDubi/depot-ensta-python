@@ -26,7 +26,7 @@ from preprocessing import preprocessing
 #%% Examen des données, prétraitements et extraction des descripteurs
 
 # Chargement des données et prétraitements
-featLearn,img73,img87 = preprocessing()
+featLearn, img73, img87 = preprocessing()
 
 
 

@@ -3,7 +3,7 @@ import numpy as np
 
 
 #%% def selectFeatureVectors
-def selectFeatureVectors(img,nbSubSample):
+def selectFeatureVectors(img, nbSubSample):
     '''Fonction permettant de récupérer l'image sous la forme d'un vecteur en
     sous échantillonnant  
     '''

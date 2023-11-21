@@ -16,11 +16,11 @@ def loadImages():
     im87_filename = 'Aral1987_Clean.jpg';
     
     # lectures des images
-    im73 = ndimage.imread(im73_filename)
-    im87 = ndimage.imread(im87_filename)
+    # im73 = ndimage.imread(im73_filename)
+    # im87 = ndimage.imread(im87_filename)
     # si les lignes d'au-dessus ne fonctionnent pas
-    # im73 = plt.imread(im73_filename)
-    # im87 = plt.imread(im87_filename)
+    im73 = plt.imread(im73_filename)
+    im87 = plt.imread(im87_filename)
 
 
 
