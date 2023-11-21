@@ -38,6 +38,15 @@ Image img73 dimensions: Height = 889, Width = 1086, Channels = 3
 Image img87 dimensions: Height = 889, Width = 1086, Channels = 3
 """
 
+plt.subplot(1, 2, 1)
+plt.imshow(img73)
+plt.title('Cropped Image 1973')
+
+plt.subplot(1, 2, 2)
+plt.imshow(img87)
+plt.title('Cropped Image 1987')
+
+plt.show()
 
 
 

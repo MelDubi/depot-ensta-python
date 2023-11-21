@@ -13,26 +13,12 @@ from displayFeatures3d import displayFeatures3d
 def preprocessing():
     img73, img87 = loadImages()
 
-    plt.subplot(2, 2, 1)
-    plt.imshow(img73)
-    plt.title('Image 1973')
-
-    plt.subplot(2, 2, 2)
-    plt.imshow(img87)
-    plt.title('Image 1987')
-
     img73 = img73[60:-40, :, :]
     img87 = img87[60:-40, :, :]
 
-    plt.subplot(2, 2, 3)
-    plt.imshow(img73)
-    plt.title('Cropped Image 1973')
+    feat, nbPix, nbFeat = selectFeatureVectors(img73, 500)
+    print(f"Number of training data: {nbPix}")
+    """ Number of training data: 1714 """
 
-    plt.subplot(2, 2, 4)
-    plt.imshow(img87)
-    plt.title('Cropped Image 1987')
-
-    plt.show()
-
-    return 0, img73, img87
+    return feat, img73, img87
     
