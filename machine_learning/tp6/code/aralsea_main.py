@@ -10,7 +10,7 @@ plt.ioff() # to see figure avant input
 # ------------------------------------------------
 # YOUR CODE HERE
 from preprocessing import preprocessing
-
+from unsupervisedTraining import unsupervisedTraining
 
 
 
@@ -56,8 +56,7 @@ plt.show()
 # Apprentissage de la fonction de classement
 
 # ------------------------------------------------
-# YOUR CODE HERE
-
+model = unsupervisedTraining(featLearn, model='kmeans')
 
 
 # ------------------------------------------------

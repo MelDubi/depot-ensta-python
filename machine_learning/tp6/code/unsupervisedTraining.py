@@ -14,42 +14,16 @@ def unsupervisedTraining(featLearn, method='kmeans'):
     - renvoie model: le modèle de classement ou classifieur
     '''
     
-    
-    # fixer le nombre de classes
     answer = input('nombre de classes:')
     nbCluster = int(answer)
     
     if method == 'kmeans':
-
-    # ------------------------------------------------
-    # YOUR CODE HERE
-
-
-
-
-
-
-
-
-    # ------------------------------------------------
-    # ------------------------------------------------
-
-
+        model = KMeans(n_clusters=nbCluster, random_state=42)
+        model.fit(featLearn)
     elif method == 'gmm':
-    
-    # ------------------------------------------------
-    # YOUR CODE HERE
-   
+        model = GaussianMixture(n_components=nbCluster, random_state=42)
+        model.fit(featLearn)
 
-
-
-
-
-    # ------------------------------------------------
-    # ------------------------------------------------
-
-
-    # sortie
     return model
 
 
