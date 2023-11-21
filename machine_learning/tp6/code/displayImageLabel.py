@@ -19,6 +19,7 @@ def displayImageLabel(label,img):
     
     # options d'affichage
     plt.colorbar()
+    plt.show()
     
     return imgLabel, imgplot
 

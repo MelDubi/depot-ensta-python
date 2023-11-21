@@ -11,9 +11,11 @@ plt.ioff() # to see figure avant input
 # YOUR CODE HERE
 from preprocessing import preprocessing
 from unsupervisedTraining import unsupervisedTraining
+from unsupervisedClassifying import unsupervisedClassifying
 
 from displayFeatures2d import displayFeatures2d
 from displayFeatures3d import displayFeatures3d
+from displayImageLabel import displayImageLabel
 
 
 
@@ -66,9 +68,27 @@ displayFeatures3d(featLearn, labels_predict)
 
 #%% Classement et estimation de la diminution de surface
 # Classifying / Predicting / Testing
+labels_prediction_img73 = unsupervisedClassifying(model, img73)
+labels_prediction_img87 = unsupervisedClassifying(model, img87)
 
 
 # mise en forme de l'image de 1973 et 1987 en matrice Num Pixels / Val Pixels
+img73_label, img73_plot = displayImageLabel(labels_prediction_img73, img73)
+img87_label, img87_plot = displayImageLabel(labels_prediction_img87, img87)
+
+plt.subplot(1, 2, 1)
+plt.imshow(img73_label)
+plt.title('Image 1973 Predicted Labels')
+
+plt.subplot(1, 2, 2)
+plt.imshow(img87_label)
+plt.title('Image 1987 Predicted Labels')
+plt.colorbar()
+
+plt.show()
+
+
+
 
 # ------------------------------------------------
 # YOUR CODE HERE

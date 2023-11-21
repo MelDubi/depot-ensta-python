@@ -9,20 +9,9 @@ def unsupervisedClassifying(model, feat):
     feat est la matrice du jeu de données à classer
     label est la classe prédite
     '''
-	
-	# ------------------------------------------------
-	# YOUR CODE HERE
-
-    
-
-
-
-	# ------------------------------------------------
-	# ------------------------------------------------
-
-
-
-	# sortie
+    height, width, channels = feat.shape
+    feat_matrix = feat.reshape((height * width, channels))
+    label = model.predict(feat_matrix)
 
     return label
 
