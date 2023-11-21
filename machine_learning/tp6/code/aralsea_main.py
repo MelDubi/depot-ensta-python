@@ -87,9 +87,16 @@ print("Proportion de la mer dans l'Image 1987:", proportion_mer_img87)
 print("Une chute du niveau de la mer de:", proportion_mer_img73-proportion_mer_img87)
 
 """
+avec 3 classes
 Proportion de la mer dans l'Image 1973: 27.632828930016085
 Proportion de la mer dans l'Image 1987: 21.373769627030974
 Une chute du niveau de la mer de: 6.259059302985111
+"""
+"""
+avec 6 classes
+Proportion de la mer dans l'Image 1973: 24.957227252250675
+Proportion de la mer dans l'Image 1987: 19.796838201140453
+Une chute du niveau de la mer de: 5.160389051110222
 """
 
 
