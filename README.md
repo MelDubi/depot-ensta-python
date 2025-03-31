@@ -21,6 +21,7 @@ You must select a branch to move from one academic sequence to another :
  
 - SA3:
   - [Data analysis](https://github.com/MelDubi/depot-ensta-python/tree/2A/Analyses%20statistiques%20)
+  - [Fundamental algorithms](https://github.com/MelDubi/depot-ensta-python/tree/2A/Algorithmes%20fondamentale)
 
 - SA4:
   - [Compilation](https://github.com/MelDubi/depot-ensta-python/tree/2A/Compilation)
