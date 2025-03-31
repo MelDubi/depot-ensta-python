@@ -10,17 +10,23 @@
 You must select a branch to move from one academic sequence to another :
 
 - SA1:
-  - [Automatic](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA1/auto/TD4)
-  - [Sensor](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA1/capteur)
-  - [Numerical tools](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA1/outilsNum)
-  - [Introduction to Python](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA1/python)
+  - [Automatic](https://github.com/MelDubi/depot-ensta-python/tree/1A/Automatique)
+  - [Sensor](https://github.com/MelDubi/depot-ensta-python/tree/1A/Capteurs)
+  - [Numerical tools](https://github.com/MelDubi/depot-ensta-python/tree/1A/Outils%20numériques)
+  - [Introduction to Python](https://github.com/MelDubi/depot-ensta-python/tree/1A/Python)
 
 - SA2:
-  - [Algorithm](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA2/algo)
-  - [Numerical analysis](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA2/analyseNum)
-  - [Automatic](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA2/auto)
-
+  - [Algorithm](https://github.com/MelDubi/depot-ensta-python/tree/1A/Algorythmes%20fondamentale)
+  - [Numerical analysis](https://github.com/MelDubi/depot-ensta-python/tree/1A/Analyse%20Numérique)
+ 
 - SA3:
-  - [Data analysis](https://github.com/tanguy-rdt/depot-ensta-python/tree/SA3/AnnalyseDonnees)
+  - [Data analysis](https://github.com/MelDubi/depot-ensta-python/tree/2A/Analyses%20statistiques%20)
+
+- SA4:
+  - [Compilation](https://github.com/MelDubi/depot-ensta-python/tree/2A/Compilation)
+  - [Digital Image Processing](https://github.com/MelDubi/depot-ensta-python/tree/2A/Traitement%20de%20l'image)
+
+- SA5:
+  - [Machine learning](https://github.com/MelDubi/depot-ensta-python/tree/3A/machine_learning)
 
 
